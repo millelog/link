@@ -1,7 +1,7 @@
 # Kutt at link.cascadeonline.dev (Coolify app on gpu1). Secrets are Coolify env vars.
 services:
   kutt:
-    image: kutt/kutt:v3.2.6
+    build: .  # kutt/kutt:v3.2.6 plus custom/ (Cascade theme), see Dockerfile
     restart: unless-stopped
     expose:
       - "3000"

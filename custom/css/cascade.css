@@ -1,0 +1,143 @@
+/* Cascade Online theme for Kutt: the review app's dark ground, Poppins, teal pills (tokens from cascade-online design/claude/system). */
+@font-face { font-family: 'Poppins'; src: url('/images/Poppins-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Poppins'; src: url('/images/Poppins-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+
+:root {
+  --teal: #2ac2c6; --teal-hover: #55dcdf; --mint: #7fdec4;
+  --gray: #1e1e1e; --line: #303030; --hairline-dark: rgba(255,255,255,0.09);
+  --gray-300: oklch(87.2% 0.01 258.338); --gray-600: oklch(44.6% 0.03 256.802);
+  --error-on-dark: oklch(80.8% 0.114 19.571); --error-panel: #4a1f1f; --error-panel-ink: #ff9d9d;
+  --font-sans: Poppins, sans-serif;
+
+  /* Kutt's own variables, mapped onto the brand */
+  --bg-color: var(--gray);
+  --text-color: #fff;
+  --color-primary: var(--teal);
+  --outline-color: var(--teal);
+  --focus-outline-color: var(--teal);
+  --button-bg: var(--line);
+  --button-bg-box-shadow-color: transparent;
+  --button-bg-primary: var(--teal);
+  --button-bg-primary-box-shadow-color: transparent;
+  --button-bg-secondary: transparent;
+  --button-bg-secondary-box-shadow-color: transparent;
+  --button-bg-danger: var(--error-panel);
+  --button-bg-danger-box-shadow-color: transparent;
+  --button-bg-success: var(--teal);
+  --button-bg-success-box-shadow-color: transparent;
+  --button-action-shadow-color: transparent;
+  --underline-color: var(--teal);
+  --secondary-text-color: var(--gray-300);
+  --send-icon-hover-color: var(--teal);
+  --send-spinner-icon-color: var(--gray-300);
+  --success-icon-color: var(--teal);
+  --error-icon-color: var(--error-on-dark);
+  --copy-icon-color: var(--teal);
+  --copy-icon-bg-color: var(--line);
+  --copy-icon-shadow-color: transparent;
+  --checkbox-bg-color: var(--teal);
+  --input-shadow-color: transparent;
+  --input-hover-shadow-color: transparent;
+  --input-label-color: #fff;
+  --table-bg-color: var(--line);
+  --table-shadow-color: transparent;
+  --table-tr-border-color: var(--hairline-dark);
+  --table-tr-hover-bg-color: #383838;
+  --table-head-tr-border-color: var(--hairline-dark);
+  --table-status-gray-bg-color: var(--gray);
+  color-scheme: dark;
+}
+
+body { font: 16px/1.5 var(--font-sans); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, .admin-form-title, .login-signup-message h1, main #shorturl h1, #main-table-wrapper h2,
+h1.settings-welcome, .stats-info h2, .stats-period h2, .dialog .content h2 { font-weight: 700 !important; text-wrap: balance; }
+a { color: var(--teal); }
+a:hover { color: var(--mint); }
+:focus-visible { outline: 2px solid var(--teal) !important; outline-offset: 2px; }
+hr { background-color: var(--hairline-dark); }
+span.underline, main #shorturl h1 span, h1.settings-welcome span, #apikey p { border-bottom-color: var(--gray-300); }
+p.error, main form p.error { color: var(--error-on-dark); }
+p.success { color: var(--teal); }
+
+/* Header: logo plus the app name, plain text links like the review app top bar */
+header { height: 80px; border-bottom: 1px solid var(--hairline-dark); width: 100%; max-width: none; }
+header .logo img { height: 28px; width: auto; margin-right: 16px; }
+header .co-app-name { padding-left: 16px; border-left: 1px solid var(--gray-600); color: var(--gray-300); font-size: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+header nav a.nav { color: var(--gray-300); font-weight: 700; font-size: 14px; text-decoration: none; }
+header nav a.nav:hover { color: #fff; }
+header nav ul { flex-direction: row; gap: 2rem; }
+header nav ul li, header nav ul li:last-child { margin: 0; }
+header nav a { white-space: nowrap; }
+
+/* Buttons: pills, gray label on teal, press scales to .95 */
+a.button, button { font-family: var(--font-sans); font-weight: 700; color: #fff; box-shadow: none !important; transition: transform 150ms cubic-bezier(0.25,1,0.5,1), background-color 300ms cubic-bezier(0.25,1,0.5,1); }
+a.button:hover, a.button:focus, button:hover, button:focus { transform: none; }
+a.button:active, button:active { transform: scale(0.95); }
+a.button.primary, button.primary, a.button.success, button.success { color: var(--gray); }
+a.button.primary:hover, button.primary:hover, a.button.success:hover, button.success:hover { background: var(--teal-hover); }
+a.button.secondary, button.secondary { color: #fff; border: 2px solid var(--gray-300); }
+a.button.secondary:hover, button.secondary:hover { border-color: var(--teal); }
+a.button.danger, button.danger { color: var(--error-panel-ink); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.link { color: var(--teal); background: none; }
+button.nav, table .tab a { background-color: var(--line); color: #fff; box-shadow: none; }
+button.nav:disabled, table .tab a.active { background-color: var(--gray); color: var(--gray-300); }
+button.action.delete, button.action.edit, button.action.qrcode, a.button.action.stats, button.action.stats, button.action.ban { background: var(--gray); }
+button.action.delete svg, button.action.ban svg { stroke: var(--error-on-dark); }
+button.action.edit svg, a.button.action.stats svg, button.action.stats svg { stroke: var(--teal); }
+button.action.qrcode svg { fill: var(--gray-300); }
+
+/* Fields: raised fill with a visible edge that turns teal on focus */
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="datetime-local"], select, textarea {
+  font-family: var(--font-sans); letter-spacing: 0; color: #fff; background-color: var(--line);
+  border: 1px solid var(--gray-600) !important; box-shadow: none !important; transition: border-color 200ms;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--teal) !important; }
+input::placeholder, textarea::placeholder { color: var(--gray-300) !important; }
+.error input, .error select { border-color: var(--error-on-dark) !important; }
+select:has(option[value=""]:checked) { color: var(--gray-300); }
+select option { background: var(--gray); color: #fff; }
+input[type="checkbox"] { background-color: var(--line); border: 1px solid var(--gray-300); box-shadow: none; }
+input[type="checkbox"]::after { box-shadow: none; }
+label { color: #fff; }
+input, select, input::placeholder { letter-spacing: 0 !important; }
+
+/* Tables and panels: raised cards, 8px radius, no shadow */
+table, #stats, .dialog .box { background-color: var(--line); border-radius: 8px; box-shadow: none; }
+table tbody, table thead, table tfoot { border-radius: 8px; }
+table thead, table tfoot { background-color: var(--line); color: var(--gray-300); }
+#main-table-wrapper table tr.edit { background-color: var(--gray); }
+#main-table-wrapper table tbody td.right-fade:after { background: linear-gradient(to left, var(--line), rgba(48,48,48,0.001)); }
+#main-table-wrapper table td .description, #main-table-wrapper table td .description a,
+#main-table-wrapper table td .description span { color: var(--gray-300); border-bottom-color: var(--gray-300); }
+#main-table-wrapper table td .description svg, .search-input-wrapper svg { stroke: var(--gray-300); }
+#main-table-wrapper table .status { color: var(--gray); }
+#main-table-wrapper table .status.green { background-color: var(--mint); }
+#main-table-wrapper table .status.red { background-color: var(--error-panel-ink); }
+#main-table-wrapper table .nav-divider { background-color: var(--gray-600); }
+.dialog { background-color: rgb(0 0 0 / 0.55); }
+.dialog .box { box-shadow: 0 40px 100px rgba(0,0,0,0.55); border-radius: 24px; }
+[data-tooltip]:after { background: var(--line); color: #fff; }
+[data-tooltip]:before { border-top-color: var(--line); }
+
+/* Stats map in teal steps */
+svg.map path { fill: var(--line); stroke: var(--gray); }
+svg.map path.color-1 { fill: #1c4f51; } svg.map path.color-2 { fill: #1f6567; }
+svg.map path.color-3 { fill: #237b7e; } svg.map path.color-4 { fill: #269295; }
+svg.map path.color-5 { fill: #28aaad; } svg.map path.color-6 { fill: var(--teal); }
+#map-tooltip:after { background: var(--line); color: #fff; }
+#map-tooltip:before { border-top-color: var(--line); }
+
+@media (max-width: 640px) {
+  header { padding: 0 16px; height: 64px; }
+  header .logo img { height: 22px; margin-right: 0; }
+  header .co-app-name { display: none; }
+  header nav ul { gap: 1rem; }
+  header nav a.nav { font-size: 13px; }
+}
+
+footer { color: var(--gray-300); font-size: 12px; border-top: 1px solid var(--hairline-dark); margin-top: 48px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
