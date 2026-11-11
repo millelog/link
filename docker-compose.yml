@@ -1,0 +1,29 @@
+# Kutt at link.cascadeonline.dev (Coolify app on gpu1). Secrets are Coolify env vars.
+services:
+  kutt:
+    image: kutt/kutt:v3.2.6
+    restart: unless-stopped
+    expose:
+      - "3000"
+    volumes:
+      - kutt-data:/var/lib/kutt
+    environment:
+      - SITE_NAME=Cascade Links
+      - DEFAULT_DOMAIN=link.cascadeonline.dev
+      - DB_FILENAME=/var/lib/kutt/data.sqlite
+      - JWT_SECRET=${JWT_SECRET}
+      - TRUST_PROXY=true
+      - DISALLOW_REGISTRATION=true
+      - DISALLOW_ANONYMOUS_LINKS=true
+      - ENABLE_RATE_LIMIT=true
+      # SendGrid SMTP relay (same as sign); enables password reset
+      - MAIL_ENABLED=true
+      - MAIL_HOST=smtp.sendgrid.net
+      - MAIL_PORT=587
+      - MAIL_SECURE=false
+      - MAIL_USER=apikey
+      - MAIL_PASSWORD=${SENDGRID_API_KEY}
+      - MAIL_FROM=Cascade Online <info@cascadeonlinedesign.com>
+
+volumes:
+  kutt-data:
